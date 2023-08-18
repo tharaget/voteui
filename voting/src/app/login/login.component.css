@@ -1,0 +1,36 @@
+/*CSS for tags*/
+form{
+  border: black solid 1px;
+  padding: 1em 2em;
+}
+h1{
+  text-align: center;
+}
+input{
+  border: black solid 1px;
+}
+
+/*CSS for classes*/
+.back {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+.div-center {
+  width: 50%;
+  height: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  overflow: auto;
+  padding: 1em 2em;
+  display: table;
+}
+div.content {
+  display: table-cell;
+  vertical-align: middle;
+}
