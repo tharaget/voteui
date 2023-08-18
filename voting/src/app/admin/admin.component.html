@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
   <h1 style="text-align: center">Results of Election</h1>
 
   <div class="row">
@@ -8,10 +9,10 @@
         <div class="col-sm-12 bg-info container-fluid">
           <h4 class="col-sm-12 text-center">SOUTH AFRICAN SWEDEN UNIVERSITY FORUM</h4>
         </div>
-        <div class="col-sm-12 bg-light" *ngFor="let pt of portfolio.portfoliosSASUF">
-          <h6>{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
+        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosSASUF">
+          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
 
-          <table class="table table-striped table-bordered">
+          <table class="table table-white table-bordered">
             <thead>
             <tr style="height:50%">
               <th scope="col-sm-3"></th>
@@ -40,13 +41,13 @@
 
 
     <div class="container-fluid col-sm-6">
-      <div class="bg-primary rounded-3 border border-dark container-fluid" >
+      <div class="bg-secondary rounded-3 border border-dark container-fluid" >
         <div class="col-sm-12 bg-info container-fluid">
           <h4 class="col-sm-12 text-center">UNIVERSITY OF VENDA INTERNATIONAL STUDENT UNION</h4>
         </div>
-        <div class="col-sm-12 bg-light" *ngFor="let pt of portfolio.portfoliosUNISU">
-          <h6 colspan="5">{{ pt.name }} PORTFOLIO FOR {{pt.type}}</h6>
-          <table class="table table-striped table-bordered">
+        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosUNISU">
+          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
+          <table class="table table-white table-bordered">
             <thead>
             <tr style="height:50%">
               <th scope="col-sm-3"></th>
@@ -70,18 +71,12 @@
         </div>
       </div>
     </div>
-
-
-
-
-    <br>
-      <div class="row">
-        <div class="col"></div>
-        <div class="col">
-          <button class="btn btn-primary" (click)="logout()" >Logout</button>
-        </div>
-        <div class="col">
-        </div>
-      </div>
   </div>
+  <br>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary" (click)="logout()" >Logout</button>
+    </div>
+  </div>
+
 </div>
