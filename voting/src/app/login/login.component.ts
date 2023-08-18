@@ -35,7 +35,7 @@ export class LoginComponent {
     let usernameValue: any = this.loginForm.value.username;
     let passwordValue: any = this.loginForm.value.password;
 
-    let voter: Voter = {id: 0, studentNumber: usernameValue, password: passwordValue, roles: ''};
+    let voter: Voter = {id: 0, studentNumber: usernameValue, password: passwordValue, roles: '', southAfrican:0};
 
     this.loginService.login(voter).subscribe(
       data => {

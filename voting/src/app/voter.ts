@@ -3,4 +3,5 @@ export interface Voter {
   studentNumber: string,
     password: string,
   roles:string,
+  southAfrican:number,
 }

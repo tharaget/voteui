@@ -19,6 +19,7 @@ import {Voter} from "../voter";
 export class VoteComponent implements OnInit {
 
   portfolio : any | undefined;
+  citizenship : any | undefined;
   constructor(private votingService: VotingService,
               private loginService: LoginService,
               private route: Router) {
@@ -26,8 +27,10 @@ export class VoteComponent implements OnInit {
 
   ngOnInit()
   {
-        let text:any = localStorage.getItem("voter");
-        let voter : any = JSON.parse(text);
+      let text:any = localStorage.getItem("voter");
+      let voter : any = JSON.parse(text);
+
+      this.citizenship = voter.southAfrican;
 
       this.votingService.candidateHttp(voter).subscribe( portfolioData =>{
 
