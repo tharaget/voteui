@@ -12,30 +12,21 @@ import {VoteComponent} from "../vote/vote.component";
 })
 export class LoginComponent {
 
-  private sessionID:string='';
 
-  loginForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
+  form : FormGroup = this.fb.group({
+      username : ['',Validators.required],
+      password : ['',Validators.required],
+    });
 
-  });
-
-
+  user : Voter = {id: 0, studentNumber: '', password: '', roles: '', southAfrican:0};
   constructor(private loginService: LoginService,
               private fb: FormBuilder,
               private route: Router) {
   }
 
-  getsessionID(): string {
-    return this.sessionID;
-  }
-
   onLogin() {
 
-    let usernameValue: any = this.loginForm.value.username;
-    let passwordValue: any = this.loginForm.value.password;
-
-    let voter: Voter = {id: 0, studentNumber: usernameValue, password: passwordValue, roles: '', southAfrican:0};
+    let voter: Voter = {id: 0, studentNumber: this.user.studentNumber, password:this.user.password, roles: '', southAfrican:0};
 
     this.loginService.login(voter).subscribe(
       data => {

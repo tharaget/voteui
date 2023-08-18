@@ -1,20 +1,45 @@
-<div class="div-center">
-  <div class="content">
-    <form [formGroup]="loginForm">
-      <h1>Votela</h1>
-      <small> Please enter your login and password to vote</small>
-      <hr/>
-      <div>
-        <input formControlName="username" type="name" class="form-control" placeholder="username"><br>
-      </div>
-      <div>
-        <input formControlName="password" type="password" class="form-control" placeholder="Password"><br>
-      </div>
-      <button type="submit" class="btn btn-primary" (click)="onLogin()">Login</button>
-      <hr/>
-    </form>
+<div class="sidenav">
+  <div class="login-main-text">
+    <div class="text-center">
+      <h1 class="text-center">Votela</h1>
+      <img src="../../assets/img/univen.png" class="center" height="100" width="100">
+    </div>
+
   </div>
 </div>
 
+<div class="main">
+  <div class="col-md-5 col-sm-12">
+    <div [formGroup]="form" class="login-form">
+      <form>
+        <div class="row p-1">
+          <div class="form-group" [formGroup]="form">
+            <label>User Name</label>
+            <input class="form-control" formControlName="username" [(ngModel)]="user.studentNumber" placeholder="User Name" type="text">
+          </div>
+        </div>
+
+
+        <div class="row p-1">
+          <div class="form-group" [formGroup]="form">
+            <label>Password</label>
+            <input class="form-control" formControlName="password"  [(ngModel)]="user.password" placeholder="Password" type="password">
+          </div>
+        </div>
+
+
+        <div class="row p-1 ">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-center" [formGroup]="form">
+            <button (click)="onLogin()" [disabled]="!form.valid" class="btn btn-primary btn-sm"><i
+              class="bi bi-key"></i>Login
+            </button>
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
 
 
