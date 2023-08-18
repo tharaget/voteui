@@ -28,6 +28,26 @@ export class VotingService {
     return this.http.post<any>( urlLogin, castedVotedDTO ,{headers});
   }
 
+  createCycleHttp()
+  {
+      let text:any = localStorage.getItem("voter");
+      let voter : any = JSON.parse(text);
+
+      const urlLogin = "https://ictspring-vote.azuremicroservices.io/api/vote/create_cycle";
+      const headers = { 'Authorization': 'Basic '+this.getAuthorizationBase64(voter),'Content-Type':'application/json'};
+      return this.http.post<any>( urlLogin, voter ,{headers});
+  }
+
+  deleteCycleHttp()
+  {
+      let text:any = localStorage.getItem("voter");
+      let voter : any = JSON.parse(text);
+
+      const urlLogin = "https://ictspring-vote.azuremicroservices.io/api/vote/open_cycle";
+      const headers = { 'Authorization': 'Basic '+this.getAuthorizationBase64(voter),'Content-Type':'application/json'};
+      return this.http.post<any>( urlLogin, voter ,{headers});
+  }
+
 
   getAuthorizationBase64( voter : any )
   {

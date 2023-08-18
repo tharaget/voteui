@@ -46,8 +46,35 @@ export class AdminComponent implements OnInit {
   }
 
 
-    logout()
-    {
+  insertCycle()
+  {
+      this.votingService.createCycleHttp().
+      subscribe( portfolioData =>{
+               window.location.reload();
+           },
+           error =>
+           {
+               alert( 'can not connect to API');
+           });
+  }
+
+  deleteCycle()
+  {
+        this.votingService.deleteCycleHttp().
+        subscribe( portfolioData =>{
+                 window.location.reload();
+             },
+             error =>
+             {
+                 alert( 'can not connect to API');
+             });
+
+  }
+
+
+  logout()
+  {
+      localStorage.removeItem("voter");
       this.route.navigate(['/login']);
-    }
+  }
 }
