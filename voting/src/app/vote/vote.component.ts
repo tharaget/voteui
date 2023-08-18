@@ -82,13 +82,47 @@ export class VoteComponent implements OnInit {
       let dto : any = {voter:vo,portfolio:portf,candidate:cand}
 
       this.votingService.castVoteHttp(dto).subscribe( data =>{
-                      window.location.reload()
-                 },
-                 error =>
-                 {
-                     alert( 'can not connect to API');
-                 }
-           );
+
+                  this.portfolio.portfoliosUNISU.forEach(function(item:Portfolio)
+                  {
+                      item.candidates.forEach(function(candidate:Candidate)
+                      {
+                          const found = data.candidates.find((itemCandidate:any) => {
+                            return itemCandidate.id === candidate.id;
+                          });
+                          if( found != null )
+                          {
+                              candidate.voted = 1;
+                          } else
+                          {
+                            candidate.voted = 0;
+                          }
+                      });
+                  });
+
+                  this.portfolio.portfoliosSASUF.forEach(function(item:Portfolio)
+                  {
+                       item.candidates.forEach(function(candidate:Candidate)
+                       {
+                            const found = data.candidates.find((itemCandidate:any) => {
+                                  return itemCandidate.id === candidate.id;
+                            });
+                            if( found != null )
+                            {
+                                candidate.voted = 1;
+                            }else
+                            {
+                              candidate.voted = 0;
+                            }
+                       });
+                  });
+
+             },
+             error =>
+             {
+                 alert( 'can not connect to API');
+             }
+       );
   }
 
   logout()
