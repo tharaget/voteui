@@ -30,6 +30,11 @@ export class VoteComponent implements OnInit {
       let text:any = localStorage.getItem("voter");
       let voter : any = JSON.parse(text);
 
+      if( voter.roles === "Admin" )
+      {
+          this.route.navigate(['/admin'])
+      }
+
       this.citizenship = voter.southAfrican;
 
       this.votingService.candidateHttp(voter).subscribe( portfolioData =>{

@@ -29,6 +29,12 @@ export class AdminComponent implements OnInit {
   {
       let text:any = localStorage.getItem("voter");
       let voter : any = JSON.parse(text);
+
+      if( voter.roles === "Voter" )
+      {
+          this.route.navigate(['/vote'])
+      }
+
       this.votingService.candidateHttp(voter).subscribe( portfolioData =>{
                       this.portfolio = portfolioData;
                   },
