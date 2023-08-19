@@ -14,6 +14,9 @@ export class AdminComponent implements OnInit {
 
   portfolio : any | undefined;
 
+  isVotingOpen : boolean = false;
+  isVotingClosed : boolean = false;
+
   ballotForm = this.fb.group({
     vote1: ['',Validators.required ],
     vote2: ['',Validators.required ]
@@ -37,6 +40,9 @@ export class AdminComponent implements OnInit {
 
       this.votingService.candidateHttp(voter).subscribe( portfolioData =>{
                       this.portfolio = portfolioData;
+
+                      this.isVotingOpen =  portfolioData.cycles === null ? true : false;
+                      this.isVotingClosed =  portfolioData.cycles === null ? false : true;
                   },
                   error =>
                   {

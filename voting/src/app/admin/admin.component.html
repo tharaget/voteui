@@ -79,8 +79,8 @@
   <br>
   <div class="row">
     <div class="col-sm-12 text-center">
-      <button *ngIf="!portfolio.cycle" class="btn btn-danger btn-md center-block" (click)="insertCycle()" >Close Election</button>
-      <button *ngIf="portfolio.cycle" class="btn btn-success btn-md center-block" (click)="deleteCycle()" >Open Election</button>
+      <button *ngIf="isVotingOpen" class="btn btn-danger btn-md center-block" (click)="insertCycle()" >Close Election</button>
+      <button *ngIf="isVotingClosed" class="btn btn-success btn-md center-block" (click)="deleteCycle()" >Open Election</button>
       <button  class="btn btn-primary btn-md center-block" (click)="logout()" >Logout</button>
     </div>
   </div>

@@ -20,6 +20,8 @@ export class VoteComponent implements OnInit {
 
   portfolio : any | undefined;
   citizenship : any | undefined;
+  isVotingOpen : boolean = false;
+  isVotingClosed : boolean = false;
   constructor(private votingService: VotingService,
               private loginService: LoginService,
               private route: Router) {
@@ -41,36 +43,8 @@ export class VoteComponent implements OnInit {
 
                 this.portfolio = portfolioData;
 
-
-                portfolioData.portfoliosUNISU.forEach(function(item:Portfolio)
-                {
-                    item.candidates.forEach(function(candidate:Candidate)
-                    {
-                        const found = portfolioData.votedCandidates.find((itemCandidate:any) => {
-                          return itemCandidate.id === candidate.id;
-                        });
-                        if( found != null )
-                        {
-                            candidate.voted = 1;
-                        }
-                    });
-                });
-
-                portfolioData.portfoliosSASUF.forEach(function(item:Portfolio)
-                {
-                     item.candidates.forEach(function(candidate:Candidate)
-                     {
-                          const found = portfolioData.votedCandidates.find((itemCandidate:any) => {
-                                return itemCandidate.id === candidate.id;
-                          });
-                          if( found != null )
-                          {
-                              candidate.voted = 1;
-                          }
-                     });
-                });
-
-
+                this.updateVotedCandidates(portfolioData.portfoliosUNISU, portfolioData.votedCandidates, portfolioData.cycles);
+                this.updateVotedCandidates(portfolioData.portfoliosSASUF, portfolioData.votedCandidates, portfolioData.cycles );
             },
             error =>
             {
@@ -78,6 +52,30 @@ export class VoteComponent implements OnInit {
             }
       );
   }
+
+  updateVotedCandidates(portfolios : Portfolio[], candidates : Candidate[] , cycle : any )
+  {
+        this.isVotingOpen =  cycle === null ? true : false;
+        this.isVotingClosed =  cycle === null ? false : true;
+
+        portfolios.forEach(function(item:Portfolio) {
+                     item.candidates.forEach(function(candidate:Candidate)
+                     {
+                          const found = candidates.find((itemCandidate:any) => {
+                                return itemCandidate.id === candidate.id;
+                          });
+                          if( found != null )
+                          {
+                              candidate.voted = 1;
+                          } else
+                          {
+                            candidate.voted = 0;
+                          }
+                     });
+                });
+
+  }
+
 
   onVote( portf : Portfolio, cand : Candidate) {
 
@@ -88,39 +86,8 @@ export class VoteComponent implements OnInit {
 
       this.votingService.castVoteHttp(dto).subscribe( data =>{
 
-                  this.portfolio.portfoliosUNISU.forEach(function(item:Portfolio)
-                  {
-                      item.candidates.forEach(function(candidate:Candidate)
-                      {
-                          const found = data.candidates.find((itemCandidate:any) => {
-                            return itemCandidate.id === candidate.id;
-                          });
-                          if( found != null )
-                          {
-                              candidate.voted = 1;
-                          } else
-                          {
-                            candidate.voted = 0;
-                          }
-                      });
-                  });
-
-                  this.portfolio.portfoliosSASUF.forEach(function(item:Portfolio)
-                  {
-                       item.candidates.forEach(function(candidate:Candidate)
-                       {
-                            const found = data.candidates.find((itemCandidate:any) => {
-                                  return itemCandidate.id === candidate.id;
-                            });
-                            if( found != null )
-                            {
-                                candidate.voted = 1;
-                            }else
-                            {
-                              candidate.voted = 0;
-                            }
-                       });
-                  });
+                this.updateVotedCandidates(this.portfolio.portfoliosUNISU,data.candidates, data.cycle);
+                this.updateVotedCandidates(this.portfolio.portfoliosSASUF,data.candidates, data.cycle);
 
              },
              error =>
