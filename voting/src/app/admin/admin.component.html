@@ -63,7 +63,7 @@
             <tr style="height:50%" *ngFor="let candidate of pt.candidates;"
                 [ngClass]="{'table-warning':  1 === candidate.voted }">
               <td>
-                <img src="../../assets/img/{{candidate.lastName}}.jpg">
+                <img src="../../assets/img/{{candidate.studentNumber}}.jpg">
               </td>
               <td> {{candidate.firstName}} {{candidate.lastName}}</td>
               <td>
