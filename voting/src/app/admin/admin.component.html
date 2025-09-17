@@ -8,43 +8,43 @@
 
   <div class="row">
 
-    <div class="container-fluid col-sm-6">
-      <div class="bg-secondary rounded-3 border border-dark container-fluid" >
-        <div class="col-sm-12 bg-info container-fluid">
-          <h4 class="col-sm-12 text-center">SOUTH AFRICAN SWEDEN UNIVERSITY FORUM</h4>
-        </div>
-        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosSASUF">
-          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
+<!--    <div class="container-fluid col-sm-6">-->
+<!--      <div class="bg-secondary rounded-3 border border-dark container-fluid" >-->
+<!--        <div class="col-sm-12 bg-info container-fluid">-->
+<!--          <h4 class="col-sm-12 text-center">SOUTH AFRICAN SWEDEN UNIVERSITY FORUM</h4>-->
+<!--        </div>-->
+<!--        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosSASUF">-->
+<!--          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>-->
 
-          <table class="table table-white table-bordered">
-            <thead>
-            <tr style="height:50%">
-              <th scope="col-sm-3"></th>
-              <th scope="col-sm-7">Name</th>
-              <th scope="col-sm-2">Votes</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr style="height:50%" *ngFor="let candidate of pt.candidates;"
-                [ngClass]="{'table-warning':  1 === candidate.voted }">
-              <td>
-                <img src="../../assets/img/{{candidate.studentNumber}}.jpg">
-              </td>
-              <td> {{candidate.firstName}} {{candidate.lastName}}</td>
-              <td>
-                {{candidate.votes.length}}
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-
+<!--          <table class="table table-white table-bordered">-->
+<!--            <thead>-->
+<!--            <tr style="height:50%">-->
+<!--              <th scope="col-sm-3"></th>-->
+<!--              <th scope="col-sm-7">Name</th>-->
+<!--              <th scope="col-sm-2">Votes</th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr style="height:50%" *ngFor="let candidate of pt.candidates;"-->
+<!--                [ngClass]="{'table-warning':  1 === candidate.voted }">-->
+<!--              <td>-->
+<!--                <img src="../../assets/img/{{candidate.studentNumber}}.jpg">-->
+<!--              </td>-->
+<!--              <td> {{candidate.firstName}} {{candidate.lastName}}</td>-->
+<!--              <td>-->
+<!--                {{candidate.votes.length}}-->
+<!--              </td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
 
 
-    <div class="container-fluid col-sm-6">
+
+
+    <div class="container-fluid col-sm-12">
       <div class="bg-secondary rounded-3 border border-dark container-fluid" >
         <div class="col-sm-12 bg-info container-fluid">
           <h4 class="col-sm-12 text-center">UNIVERSITY OF VENDA INTERNATIONAL STUDENT UNION</h4>
