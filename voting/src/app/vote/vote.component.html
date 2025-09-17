@@ -30,7 +30,8 @@
                 <td class="text-center">
                   <img src="../../assets/img/{{candidate.studentNumber}}.png" class="rounded-circle border border-secondary" style="height: 60px; width: 60px; object-fit: cover;" alt="Candidate Photo">
                 </td>
-                <td class="fs-6 fw-semibold text-dark">
+               <td class="fs-6 fw-semibold text-dark">
+                  <span *ngIf="candidate.voted === 1" class="text-success me-2">&#10003;</span>
                   {{candidate.firstName}} {{candidate.lastName}}
                 </td>
                 <td class="text-center">
