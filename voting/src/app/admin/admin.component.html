@@ -1,88 +1,47 @@
-<div class="container-fluid">
-
-
-  <div class="text-center bg-light">
-    <img src="../../assets/img/univen.png" class="rounded" height="200" width="200">
-    <h1>Election Results</h1>
-  </div>
-
-  <div class="row">
-
-<!--    <div class="container-fluid col-sm-6">-->
-<!--      <div class="bg-secondary rounded-3 border border-dark container-fluid" >-->
-<!--        <div class="col-sm-12 bg-info container-fluid">-->
-<!--          <h4 class="col-sm-12 text-center">SOUTH AFRICAN SWEDEN UNIVERSITY FORUM</h4>-->
-<!--        </div>-->
-<!--        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosSASUF">-->
-<!--          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>-->
-
-<!--          <table class="table table-white table-bordered">-->
-<!--            <thead>-->
-<!--            <tr style="height:50%">-->
-<!--              <th scope="col-sm-3"></th>-->
-<!--              <th scope="col-sm-7">Name</th>-->
-<!--              <th scope="col-sm-2">Votes</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr style="height:50%" *ngFor="let candidate of pt.candidates;"-->
-<!--                [ngClass]="{'table-warning':  1 === candidate.voted }">-->
-<!--              <td>-->
-<!--                <img src="../../assets/img/{{candidate.studentNumber}}.jpg">-->
-<!--              </td>-->
-<!--              <td> {{candidate.firstName}} {{candidate.lastName}}</td>-->
-<!--              <td>-->
-<!--                {{candidate.votes.length}}-->
-<!--              </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--          </table>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-
-
-
-    <div class="container-fluid col-sm-12">
-      <div class="bg-secondary rounded-3 border border-dark container-fluid" >
-        <div class="col-sm-12 bg-info container-fluid">
-          <h4 class="col-sm-12 text-center">UNIVERSITY OF VENDA INTERNATIONAL STUDENT UNION</h4>
+<div class="container-fluid py-4" style="background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%); min-height: 100vh;">
+        <div class="text-center mb-4">
+          <img src="../../assets/img/univen.png" class="rounded shadow-lg mb-3" height="160" width="160" alt="Univen Logo">
+          <h1 class="display-5 fw-bold text-primary">Election Results</h1>
         </div>
-        <div class="col-sm-12 bg-dark" *ngFor="let pt of portfolio.portfoliosUNISU">
-          <h6 class="text-white text-center">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
-          <table class="table table-white table-bordered">
-            <thead>
-            <tr style="height:50%">
-              <th scope="col-sm-3"></th>
-              <th scope="col-sm-7">Name</th>
-              <th scope="col-sm-2">Votes</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr style="height:50%" *ngFor="let candidate of pt.candidates;"
-                [ngClass]="{'table-warning':  1 === candidate.voted }">
-              <td>
-                <img src="../../assets/img/{{candidate.studentNumber}}.png">
-              </td>
-              <td> {{candidate.firstName}} {{candidate.lastName}}</td>
-              <td>
-                {{candidate.votes.length}}
-              </td>
-            </tr>
-            </tbody>
-          </table>
+
+        <div class="row justify-content-center">
+          <div class="container-fluid col-lg-8 mb-4">
+            <div class="bg-secondary rounded-4 border border-dark shadow-sm p-3">
+              <div class="bg-info rounded-3 p-2 mb-3">
+                <h4 class="text-center text-white mb-0">UNIVERSITY OF VENDA INTERNATIONAL STUDENT UNION</h4>
+              </div>
+              <div class="bg-dark rounded-3 p-3 mb-3" *ngFor="let pt of portfolio.portfoliosUNISU">
+                <h6 class="text-white text-center mb-3">{{pt.name}} PORTFOLIO FOR {{pt.type}}</h6>
+                <table class="table table-bordered table-hover align-middle">
+                  <thead class="table-light">
+                    <tr>
+                      <th style="width:80px;"></th>
+                      <th>Name</th>
+                      <th>Votes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let candidate of pt.candidates;" [ngClass]="{'table-warning': 1 === candidate.voted}">
+                      <td>
+                        <img src="../../assets/img/{{candidate.studentNumber}}.png" class="rounded-circle border border-2" height="48" width="48" alt="Candidate Photo">
+                      </td>
+                      <td class="fw-semibold">{{candidate.firstName}} {{candidate.lastName}}</td>
+                      <td>
+                        <span class="badge bg-success fs-6">{{candidate.votes.length}}</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mt-4">
+          <div class="col-lg-8 text-center">
+            <button *ngIf="isVotingOpen" class="btn btn-danger btn-lg mx-2 shadow" (click)="insertCycle()">Close Election</button>
+            <button *ngIf="isVotingClosed" class="btn btn-success btn-lg mx-2 shadow" (click)="deleteCycle()">Open Election</button>
+            <button class="btn btn-primary btn-lg mx-2 shadow" (click)="logout()">Logout</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <button *ngIf="isVotingOpen" class="btn btn-danger btn-md center-block" (click)="insertCycle()" >Close Election</button>
-      <button *ngIf="isVotingClosed" class="btn btn-success btn-md center-block" (click)="deleteCycle()" >Open Election</button>
-      <button  class="btn btn-primary btn-md center-block" (click)="logout()" >Logout</button>
-    </div>
-  </div>
-
-</div>
