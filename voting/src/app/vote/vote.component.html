@@ -31,8 +31,8 @@
                   <img src="../../assets/img/{{candidate.studentNumber}}.png" class="rounded-circle border border-secondary" style="height: 60px; width: 60px; object-fit: cover;" alt="Candidate Photo">
                 </td>
                <td class="fs-6 fw-semibold text-dark">
-                  <span *ngIf="candidate.voted === 1" class="text-success me-2">&#10003;</span>
                   {{candidate.firstName}} {{candidate.lastName}}
+                 <span *ngIf="candidate.voted === 1" class="text-success me-2">&#10003;</span>
                 </td>
                 <td class="text-center">
                   <button *ngIf="isVotingOpen" class="btn btn-primary px-4" (click)="onVote(pt,candidate)">Vote</button>
